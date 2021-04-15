@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { Head } from 'next/document';
+import Head from 'next/head';
 import Link from 'next/link';
 import Prismic from '@prismicio/client';
 import ptBR from 'date-fns/locale/pt-BR';
@@ -64,11 +64,14 @@ export default function Home({ postsPagination }: HomeProps) {
   return (
     <>
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
+        <Head>
+          <title>Home | spacetraveling</title>
+        </Head>
         <Header />
         <main className={commonStyles.container}>
           <div className={`${styles.posts} ${commonStyles.postsContainer}`}>
             {posts.map(post => (
-              <Link href={`/${post?.uid}`}>
+              <Link href={`/post/${post?.uid}`}>
                 <a key={post?.uid}>
                   <strong>{post?.data?.title}</strong>
                   <p>{post?.data?.subtitle}</p>
@@ -89,7 +92,7 @@ export default function Home({ postsPagination }: HomeProps) {
             ))}
             {nextPage && (
               <button type="button" onClick={handleLoadMore}>
-                Carregar mais posts...
+                Carregar mais posts
               </button>
             )}
           </div>

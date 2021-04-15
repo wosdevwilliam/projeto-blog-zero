@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { Head } from 'next/document';
+import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 import { IconContext } from 'react-icons/lib';
 import { format } from 'date-fns';
@@ -80,11 +80,11 @@ export default function Post({ post }: PostProps): JSX.Element {
           <article className={`${styles.post} ${commonStyles.postsContainer}`}>
             <h1>{post.data.title}</h1>
             <div className={styles.info}>
-              <AiOutlineCalendar size="1.25rem" />
+              <AiOutlineCalendar size="0.85rem" />
               <time>{formattedDate}</time>
-              <BsPerson size="1.25rem" />
+              <BsPerson size="0.85rem" />
               <span>{post.data.author}</span>
-              <FiClock size="1.25rem" />
+              <FiClock size="0.85rem" />
               <span>{readingTime} min</span>
             </div>
             <div className={styles.content}>
